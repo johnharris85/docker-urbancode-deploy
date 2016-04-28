@@ -1,0 +1,4 @@
+*.zip
+ibm-ucd-install/
+ibm-ucd-agent-install/
+agent-relay-install/

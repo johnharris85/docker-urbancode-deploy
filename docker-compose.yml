@@ -1,0 +1,31 @@
+version: '2'
+services:
+  server:
+    build:
+      context: ./server
+    container_name: ucd-server
+    networks: 
+      - urbancode
+    volumes:
+      - codestation:/opt/ibm-ucd/server/var/repository
+      - data:/opt/ibm-ucd/server/appdata/var/db
+  agent:
+    build:
+      context: ./agent
+    networks: 
+      - urbancode 
+    container_name: ucd-agent
+  relay:
+    build:
+      context: ./relay
+    networks: 
+      - urbancode
+    container_name: ucd-relay
+networks:
+  urbancode:
+    driver: bridge
+volumes: 
+  codestation:
+    driver: local
+  data:
+    driver: local
