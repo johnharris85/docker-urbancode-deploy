@@ -4,6 +4,9 @@ services:
     build:
       context: ./server
     container_name: ucd-server
+    image: ucd-server:6.2.1
+    ports:
+     - "8443:8443"
     networks: 
       - urbancode
     volumes:
@@ -12,15 +15,12 @@ services:
   agent:
     build:
       context: ./agent
+    image: ucd-agent:6.2.1
     networks: 
       - urbancode 
-    depends_on:
-      - ucd-server
 networks:
   urbancode:
     driver: bridge
 volumes: 
   codestation:
-    driver: local
   data:
-    driver: local

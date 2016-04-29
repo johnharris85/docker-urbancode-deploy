@@ -17,9 +17,15 @@ If you are on Linux this should work out of the box. Users on Windows or OSX wil
 1. Clone this repo
 2. Download the software from the above link
 3. Extract the `ibm-ucd-install` folder and place it at the top-level of the cloned repo
-4. Run `urbancode.py` (either by double-clicking or switching into the directory and running in a terminal)
+4. Run `initial_config.py` (either by double-clicking or switching into the directory and running in a terminal, you may need to make it executable on Linux platforms)
+5. Run `docker-compose up`.
 
 In a couple of minutes you should have both containers up and running. Verify by opening a web browser to `https://<localhost-or-address-of-docker-machine>:8443`.
 
+You can scale the agent by moving into the project directory and typing `docker-compose scale agent=X`.
+
+You only need to run `initial_config.py` on first run / build. After that use the [native docker-compose commands].
+
 
 [from the IBM website right here]: <https://www14.software.ibm.com/webapp/iwm/web/preLogin.do?source=RATLe-UCDeploy-EVAL&S_CMP=web_dw_rt_swd>
+[native docker-compose commands]: <https://docs.docker.com/compose/reference/overview/>
