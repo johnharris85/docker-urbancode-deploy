@@ -14,13 +14,8 @@ services:
       context: ./agent
     networks: 
       - urbancode 
-    container_name: ucd-agent
-  relay:
-    build:
-      context: ./relay
-    networks: 
-      - urbancode
-    container_name: ucd-relay
+    depends_on:
+      - ucd-server
 networks:
   urbancode:
     driver: bridge
