@@ -17,6 +17,8 @@ RUN sed -i '/chmod +x "opt\/apache-ant-\${OUR_ANT_VERSION}\/bin\/ant"/ s/$/; syn
 
 VOLUME /opt/ibm-ucd/server/var/repository
 
+VOLUME /opt/ibm-ucd/server/appdata/var/db
+
 EXPOSE 8080 8443
 
 WORKDIR /opt/ibm-ucd/server/bin

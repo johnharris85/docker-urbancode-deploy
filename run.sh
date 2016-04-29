@@ -12,8 +12,4 @@ unzip ibm-ucd-install.zip
 mv ibm-ucd-install server/
 rm ibm-ucd-install.zip
 
-unzip agent-relay.zip
-mv agent-relay-install relay/
-rm agent-relay.zip
-
 # docker-compose up

@@ -2,14 +2,20 @@ FROM alpine:3.3
 
 MAINTAINER John Harris <jharris@leftshiftit.com>
 
-COPY agent-relay-install /
+RUN apk update && apk add openjdk7-jre && \
+	rm -rf /var/cache/apk/*
 
-COPY install.properties /
+COPY ibm-ucd-agent-install/ /installer/ibm-ucd-agent-install
 
-RUN
+COPY install.properties /installer/ibm-ucd-agent-install
 
-WORKDIR
+WORKDIR installer/ibm-ucd-agent-install
 
-ENTRYPOINT []
+RUN sed -i '/chmod +x opt\/apache-ant-1.8.4\/bin\/ant/ s/$/; sync/' install-agent-from-file.sh && \
+	./install-agent-from-file.sh install.properties
 
-CMD []
+WORKDIR /opt/ibm-ucd/agent/bin
+
+ENTRYPOINT ["./agent"]
+
+CMD ["run"]
