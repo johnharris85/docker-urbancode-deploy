@@ -7,11 +7,12 @@ RUN apk update && apk add openjdk7-jre && \
         
 COPY ibm-ucd-install/ /installer/ibm-ucd-install
 
-COPY install.properties /installer/ibm-ucd-install
+COPY install.extra.properties /installer/ibm-ucd-install
 
 WORKDIR installer/ibm-ucd-install
 
-RUN sed -i '/chmod +x "opt\/apache-ant-\${OUR_ANT_VERSION}\/bin\/ant"/ s/$/; sync/' install-server.sh && \
+RUN cat install.extra.properties >> install.properties && \
+    sed -i '/chmod +x "opt\/apache-ant-\${OUR_ANT_VERSION}\/bin\/ant"/ s/$/; sync/' install-server.sh && \
     chmod +x install-server.sh; sync && \
     ./install-server.sh
 
