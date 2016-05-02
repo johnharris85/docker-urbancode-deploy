@@ -6,6 +6,7 @@ services:
     container_name: ucd-server
     image: ucd-server:6.2.1
     ports:
+     - "8080:8080"
      - "8443:8443"
     networks: 
       - urbancode
